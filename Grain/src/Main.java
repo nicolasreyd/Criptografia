@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -8,7 +11,7 @@ public class Main {
         this.grain = new Grain();
     }
 
-    public void run() {
+    public void run() throws IOException {
         this.grain.init("absolute", "california"); //iv, key
         String keystream = this.grain.filter();
         System.out.println("Keystream : " + keystream);
@@ -23,8 +26,16 @@ public class Main {
         switch (option) {
             case 1:
                 System.out.println("Encrypt");
-                System.out.print("Plaintext : ");
+               /* System.out.print("Plaintext : ");
                 String ciphertext = this.grain.encrypt(input.next());
+                System.out.println("Ciphertext : " + ciphertext);
+                */
+                System.out.print("File path : ");
+                //Cambiar este path
+                File file = new File("C:\\Users\\nicol\\Desktop\\tux.bmp");
+        		byte[] bytes = LeerImagen(file);
+        		String string = new String(bytes);
+                String ciphertext = this.grain.encrypt(string);
                 System.out.println("Ciphertext : " + ciphertext);
                 break;
             case 2:
@@ -40,9 +51,17 @@ public class Main {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Main self = new Main();
         self.run();
     }
+    
+    public static byte[] LeerImagen (File bpm) throws IOException {                            
+		byte[] data = new byte[(int) bpm.length()];
+		FileInputStream fis = new FileInputStream(bpm);
+		fis.read(data, 0, data.length);
+		fis.close();
+    return data;
+	}
     
 }
