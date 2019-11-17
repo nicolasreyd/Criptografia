@@ -90,6 +90,15 @@ public class Cifrar {
 		btnGuardar.setBounds(382, 503, 159, 31);
 		frmCifradorGrain.getContentPane().add(btnGuardar);
 		
+		JLabel lblResultadoFinal = new JLabel("Resultado final");
+		lblResultadoFinal.setOpaque(true);
+		lblResultadoFinal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblResultadoFinal.setBackground(Color.BLACK);
+		lblResultadoFinal.setForeground(Color.BLACK);
+		lblResultadoFinal.setFont(new Font("HelveticaNeueLT Com 45 Lt", Font.PLAIN, 12));
+		lblResultadoFinal.setBounds(360, 183, 181, 31);
+		frmCifradorGrain.getContentPane().add(lblResultadoFinal);
+		
 		JLabel lblNewLabel = new JLabel("Cifrador Grain");
 		lblNewLabel.setIcon(new ImageIcon(Cifrar.class.getResource("/UI/banner2.png")));
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -145,6 +154,7 @@ public class Cifrar {
 				
 				ImageIcon imageIcon = new ImageIcon(imagenFinal.getScaledInstance(200, 240, Image.SCALE_SMOOTH));
 				lblImagenFinal.setIcon(imageIcon);
+				lblResultadoFinal.setForeground(Color.WHITE);
 				btnGuardar.setEnabled(true);
 			}
 		});
@@ -223,14 +233,5 @@ public class Cifrar {
 		lblNewLabel_2.setIcon(new ImageIcon(Cifrar.class.getResource("/UI/flecha.png")));
 		lblNewLabel_2.setBounds(276, 317, 55, 37);
 		frmCifradorGrain.getContentPane().add(lblNewLabel_2);
-		
-		JLabel lblResultadoFinal = new JLabel("Resultado final");
-		lblResultadoFinal.setOpaque(true);
-		lblResultadoFinal.setHorizontalAlignment(SwingConstants.CENTER);
-		lblResultadoFinal.setBackground(new Color(0, 0, 102));
-		lblResultadoFinal.setForeground(Color.WHITE);
-		lblResultadoFinal.setFont(new Font("HelveticaNeueLT Com 45 Lt", Font.PLAIN, 12));
-		lblResultadoFinal.setBounds(360, 183, 181, 31);
-		frmCifradorGrain.getContentPane().add(lblResultadoFinal);
 	}
 }
