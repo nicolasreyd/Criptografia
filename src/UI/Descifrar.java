@@ -122,7 +122,7 @@ public class Descifrar {
 		lblIngreseElArchivo.setFont(new Font("Monospaced", Font.PLAIN, 11));
 		lblIngreseElArchivo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIngreseElArchivo.setForeground(Color.GRAY);
-		lblIngreseElArchivo.setBounds(10, 141, 361, 31);
+		lblIngreseElArchivo.setBounds(19, 141, 361, 31);
 		frmCifradorGrain.getContentPane().add(lblIngreseElArchivo);
 		
 		JLabel lblImagenACifrar = new JLabel("");
