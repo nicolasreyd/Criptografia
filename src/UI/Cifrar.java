@@ -109,14 +109,14 @@ public class Cifrar {
 		lblNewLabel.setBounds(0, 0, 628, 112);
 		frmCifradorGrain.getContentPane().add(lblNewLabel);
 		
-		JButton button = new JButton("");
-		button.setFocusPainted(false);
-		button.setEnabled(false);
-		button.setFont(new Font("HelveticaNeueLT Com 45 Lt", Font.PLAIN, 12));
-		button.setBorder(null);
-		button.setBackground(Color.BLACK);
-		button.setBounds(66, 503, 104, 31);
-		frmCifradorGrain.getContentPane().add(button);
+		JButton buttonCifrar = new JButton("");
+		buttonCifrar.setFocusPainted(false);
+		buttonCifrar.setEnabled(false);
+		buttonCifrar.setFont(new Font("HelveticaNeueLT Com 45 Lt", Font.PLAIN, 12));
+		buttonCifrar.setBorder(null);
+		buttonCifrar.setBackground(Color.BLACK);
+		buttonCifrar.setBounds(66, 503, 104, 31);
+		frmCifradorGrain.getContentPane().add(buttonCifrar);
 		
 		JLabel lblIngreseElArchivo = new JLabel("Ingrese el archivo que desea cifrar");
 		lblIngreseElArchivo.setFont(new Font("Monospaced", Font.PLAIN, 11));
@@ -125,15 +125,15 @@ public class Cifrar {
 		lblIngreseElArchivo.setBounds(10, 141, 361, 31);
 		frmCifradorGrain.getContentPane().add(lblIngreseElArchivo);
 		
-		JLabel lblImagenInicial = new JLabel("");
-		lblImagenInicial.setBounds(66, 238, 181, 240);
-		frmCifradorGrain.getContentPane().add(lblImagenInicial);
+		JLabel lblImagenACifrar = new JLabel("");
+		lblImagenACifrar.setBounds(66, 238, 181, 240);
+		frmCifradorGrain.getContentPane().add(lblImagenACifrar);
 		
-		JLabel lblImagenFinal = new JLabel("");
-		lblImagenFinal.setBounds(360, 238, 181, 240);
-		frmCifradorGrain.getContentPane().add(lblImagenFinal);
+		JLabel lblImagenCifrada = new JLabel("");
+		lblImagenCifrada.setBounds(360, 238, 181, 240);
+		frmCifradorGrain.getContentPane().add(lblImagenCifrada);
 		
-		button.addActionListener(new ActionListener() {
+		buttonCifrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (imagenInicial == null) {
 					JOptionPane.showMessageDialog(null, "Debe cargar una imagen para cifrar", "Imagen inválida",
@@ -153,7 +153,7 @@ public class Cifrar {
 				}
 				
 				ImageIcon imageIcon = new ImageIcon(imagenFinal.getScaledInstance(200, 240, Image.SCALE_SMOOTH));
-				lblImagenFinal.setIcon(imageIcon);
+				lblImagenCifrada.setIcon(imageIcon);
 				lblResultadoFinal.setForeground(Color.WHITE);
 				btnGuardar.setEnabled(true);
 			}
@@ -186,14 +186,14 @@ public class Cifrar {
 					}
 
 					ImageIcon imageIcon = new ImageIcon(imagenInicial.getScaledInstance(200, 240, Image.SCALE_SMOOTH));
-					lblImagenInicial.setIcon(imageIcon);
-					button.setFocusPainted(false);
-					button.setBorder(null);
-					button.setForeground(new Color(255, 255, 255));
-					button.setBackground(new Color(0, 51, 0));
-					button.setEnabled(true);
-					button.setText("Cifrar");
-					frmCifradorGrain.getContentPane().add(button);
+					lblImagenACifrar.setIcon(imageIcon);
+					buttonCifrar.setFocusPainted(false);
+					buttonCifrar.setBorder(null);
+					buttonCifrar.setForeground(new Color(255, 255, 255));
+					buttonCifrar.setBackground(new Color(0, 51, 0));
+					buttonCifrar.setEnabled(true);
+					buttonCifrar.setText("Cifrar");
+					frmCifradorGrain.getContentPane().add(buttonCifrar);
 				}
 			}
 		});
