@@ -77,7 +77,7 @@ public class Descifrar {
 		frmCifradorGrain = new JFrame();
 		frmCifradorGrain.setTitle("GRAIN - Cifrar");
 		frmCifradorGrain.getContentPane().setBackground(new Color(0, 0, 0));
-		frmCifradorGrain.setBounds(100, 100, 617, 612);
+		frmCifradorGrain.setBounds(100, 100, 618, 637);
 		frmCifradorGrain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frmCifradorGrain.getContentPane().setLayout(null);
@@ -233,5 +233,19 @@ public class Descifrar {
 		lblNewLabel_2.setIcon(new ImageIcon(Descifrar.class.getResource("/UI/flecha.png")));
 		lblNewLabel_2.setBounds(276, 317, 55, 37);
 		frmCifradorGrain.getContentPane().add(lblNewLabel_2);
+		
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmCifradorGrain.dispose();
+			}
+		});
+		btnVolver.setForeground(Color.WHITE);
+		btnVolver.setFont(new Font("HelveticaNeueLT Com 45 Lt", Font.PLAIN, 10));
+		btnVolver.setFocusPainted(false);
+		btnVolver.setBorder(null);
+		btnVolver.setBackground(Color.DARK_GRAY);
+		btnVolver.setBounds(514, 576, 88, 22);
+		frmCifradorGrain.getContentPane().add(btnVolver);
 	}
 }
