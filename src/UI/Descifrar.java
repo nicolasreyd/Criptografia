@@ -40,7 +40,7 @@ import java.awt.event.ActionEvent;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public class Cifrar {
+public class Descifrar {
 
 	private JFrame frmCifradorGrain;
 	private BufferedImage imagenInicial = null;
@@ -54,7 +54,7 @@ public class Cifrar {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Cifrar window = new Cifrar();
+					Descifrar window = new Descifrar();
 					window.frmCifradorGrain.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,7 +66,7 @@ public class Cifrar {
 	/**
 	 * Create the application.
 	 */
-	public Cifrar() {
+	public Descifrar() {
 		initialize();
 	}
 
@@ -90,7 +90,7 @@ public class Cifrar {
 		btnGuardar.setBounds(382, 503, 159, 31);
 		frmCifradorGrain.getContentPane().add(btnGuardar);
 		
-		JLabel lblResultadoFinal = new JLabel("Imagen cifrada");
+		JLabel lblResultadoFinal = new JLabel("Imagen descifrada");
 		lblResultadoFinal.setOpaque(true);
 		lblResultadoFinal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblResultadoFinal.setBackground(Color.BLACK);
@@ -100,7 +100,7 @@ public class Cifrar {
 		frmCifradorGrain.getContentPane().add(lblResultadoFinal);
 		
 		JLabel lblNewLabel = new JLabel("Cifrador Grain");
-		lblNewLabel.setIcon(new ImageIcon(Cifrar.class.getResource("/UI/banner2.png")));
+		lblNewLabel.setIcon(new ImageIcon(Descifrar.class.getResource("/UI/banner2.png")));
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblNewLabel.setOpaque(true);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -109,16 +109,16 @@ public class Cifrar {
 		lblNewLabel.setBounds(0, 0, 628, 112);
 		frmCifradorGrain.getContentPane().add(lblNewLabel);
 		
-		JButton buttonCifrar = new JButton("");
-		buttonCifrar.setFocusPainted(false);
-		buttonCifrar.setEnabled(false);
-		buttonCifrar.setFont(new Font("HelveticaNeueLT Com 45 Lt", Font.PLAIN, 12));
-		buttonCifrar.setBorder(null);
-		buttonCifrar.setBackground(Color.BLACK);
-		buttonCifrar.setBounds(66, 503, 104, 31);
-		frmCifradorGrain.getContentPane().add(buttonCifrar);
+		JButton buttonDescifrar = new JButton("");
+		buttonDescifrar.setFocusPainted(false);
+		buttonDescifrar.setEnabled(false);
+		buttonDescifrar.setFont(new Font("HelveticaNeueLT Com 45 Lt", Font.PLAIN, 12));
+		buttonDescifrar.setBorder(null);
+		buttonDescifrar.setBackground(Color.BLACK);
+		buttonDescifrar.setBounds(66, 503, 104, 31);
+		frmCifradorGrain.getContentPane().add(buttonDescifrar);
 		
-		JLabel lblIngreseElArchivo = new JLabel("Ingrese el archivo que desea cifrar");
+		JLabel lblIngreseElArchivo = new JLabel("Ingrese el archivo que desea descifrar");
 		lblIngreseElArchivo.setFont(new Font("Monospaced", Font.PLAIN, 11));
 		lblIngreseElArchivo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIngreseElArchivo.setForeground(Color.GRAY);
@@ -133,7 +133,7 @@ public class Cifrar {
 		lblImagenCifrada.setBounds(360, 238, 181, 240);
 		frmCifradorGrain.getContentPane().add(lblImagenCifrada);
 		
-		buttonCifrar.addActionListener(new ActionListener() {
+		buttonDescifrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (imagenInicial == null) {
 					JOptionPane.showMessageDialog(null, "Debe cargar una imagen para cifrar", "Imagen inválida",
@@ -161,7 +161,7 @@ public class Cifrar {
 
 		JButton btnSeleccionarImagen = new JButton("Seleccionar imagen");
 		btnSeleccionarImagen.setForeground(new Color(255, 255, 255));
-		btnSeleccionarImagen.setIcon(new ImageIcon(Cifrar.class.getResource("/UI/subirimagen20px.png")));
+		btnSeleccionarImagen.setIcon(new ImageIcon(Descifrar.class.getResource("/UI/subirimagen20px.png")));
 		btnSeleccionarImagen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
@@ -187,13 +187,13 @@ public class Cifrar {
 
 					ImageIcon imageIcon = new ImageIcon(imagenInicial.getScaledInstance(200, 240, Image.SCALE_SMOOTH));
 					lblImagenACifrar.setIcon(imageIcon);
-					buttonCifrar.setFocusPainted(false);
-					buttonCifrar.setBorder(null);
-					buttonCifrar.setForeground(new Color(255, 255, 255));
-					buttonCifrar.setBackground(new Color(0, 51, 0));
-					buttonCifrar.setEnabled(true);
-					buttonCifrar.setText("Cifrar");
-					frmCifradorGrain.getContentPane().add(buttonCifrar);
+					buttonDescifrar.setFocusPainted(false);
+					buttonDescifrar.setBorder(null);
+					buttonDescifrar.setForeground(new Color(255, 255, 255));
+					buttonDescifrar.setBackground(new Color(0, 51, 0));
+					buttonDescifrar.setEnabled(true);
+					buttonDescifrar.setText("Descifrar");
+					frmCifradorGrain.getContentPane().add(buttonDescifrar);
 				}
 			}
 		});
@@ -205,7 +205,7 @@ public class Cifrar {
 		frmCifradorGrain.getContentPane().add(btnSeleccionarImagen);
 		
 		btnGuardar.setEnabled(false);
-		btnGuardar.setIcon(new ImageIcon(Cifrar.class.getResource("/UI/guardarImagen20px.png")));
+		btnGuardar.setIcon(new ImageIcon(Descifrar.class.getResource("/UI/guardarImagen20px.png")));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (imagenFinal == null) {
@@ -230,7 +230,7 @@ public class Cifrar {
 		});
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(Cifrar.class.getResource("/UI/flecha.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(Descifrar.class.getResource("/UI/flecha.png")));
 		lblNewLabel_2.setBounds(276, 317, 55, 37);
 		frmCifradorGrain.getContentPane().add(lblNewLabel_2);
 	}

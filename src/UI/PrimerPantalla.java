@@ -77,6 +77,7 @@ public class PrimerPantalla {
 		JButton button = new JButton("DESCIFRAR");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Descifrar.main();
 			}
 		});
 		button.setForeground(new Color(255, 255, 255));
