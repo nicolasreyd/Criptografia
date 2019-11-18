@@ -33,8 +33,11 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Properties;
 import java.awt.event.ActionEvent;
 
 import javax.imageio.ImageIO;
@@ -74,6 +77,23 @@ public class Descifrar {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		//Read config.properties
+		Properties prop = new Properties();         
+		FileInputStream stream = null;
+		try {
+			stream = new FileInputStream("src/UI/app.config");
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			prop.load(stream);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+				
 		frmCifradorGrain = new JFrame();
 		frmCifradorGrain.setTitle("GRAIN - Cifrar");
 		frmCifradorGrain.getContentPane().setBackground(new Color(0, 0, 0));
@@ -143,8 +163,8 @@ public class Descifrar {
 				
 				try {
 					imagenByteArray = ImageConverter.imageToByteArray(imagenInicial);
-					Grain grain = new Grain("clave12345".getBytes(),
-							"semilla1".getBytes(), imagenByteArray);
+					Grain grain = new Grain(prop.getProperty("key").getBytes(),
+							prop.getProperty("semilla").getBytes(), imagenByteArray);
 					imagenFinal = ImageConverter.byteArrayToImage(grain.xor());
 				} catch (IOException e) {
 					e.printStackTrace();
