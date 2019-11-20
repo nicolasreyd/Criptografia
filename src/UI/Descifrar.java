@@ -4,32 +4,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-
-import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
-import javax.swing.JRadioButton;
 import java.awt.Font;
 import java.awt.Image;
-
-import javax.swing.JTextField;
 import java.awt.Color;
-import javax.swing.border.LineBorder;
-import javax.swing.border.SoftBevelBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-import cifrador.CifradorFrame;
 import cifrador.Grain;
 import cifrador.ImageConverter;
-
-import javax.swing.border.BevelBorder;
-import javax.swing.JTextPane;
-import javax.swing.JSeparator;
-import javax.swing.JToggleButton;
-import javax.swing.JSlider;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -95,7 +78,7 @@ public class Descifrar {
 		}
 				
 		frmCifradorGrain = new JFrame();
-		frmCifradorGrain.setTitle("GRAIN - Cifrar");
+		frmCifradorGrain.setTitle("GRAIN - Descifrar");
 		frmCifradorGrain.getContentPane().setBackground(new Color(0, 0, 0));
 		frmCifradorGrain.setBounds(100, 100, 618, 637);
 		frmCifradorGrain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

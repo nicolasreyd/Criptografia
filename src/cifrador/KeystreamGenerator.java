@@ -3,36 +3,36 @@ package cifrador;
 public class KeystreamGenerator {
 	
 	private short[] clave;
-	private short[] semilla;
+	private short[] iv;
 	private short[] lfsr;
 	private short[] nfsr;
 	
-	private static final Integer LONGITUD_CLAVE = 80;
-	private static final Integer LONGITUD_SEMILLA = 64;
+	private static final Integer LongitudClave = 80;
+	private static final Integer LongitudIv = 64;
 
 	public KeystreamGenerator(short[] clave, short[] semilla) throws Exception {
 
-		if (clave.length == LONGITUD_CLAVE) {
-			this.clave = new short[LONGITUD_CLAVE];
+		if (clave.length == LongitudClave) {
+			this.clave = new short[LongitudClave];
 			for (int i = 0; i < this.clave.length; i++) {
 				this.clave[i] = clave[i];
 			}
 
 		} else {
-			throw new Exception("Longitud de la clave: " + clave.length + ". Longitud requerida: " + LONGITUD_CLAVE);
+			throw new Exception("Longitud de clave incorrecta");
 		}
 
-		if (semilla.length == LONGITUD_SEMILLA) {
-			this.semilla = new short[LONGITUD_SEMILLA];
-			for (int i = 0; i < this.semilla.length; i++) {
-				this.semilla[i] = semilla[i];
+		if (semilla.length == LongitudIv) {
+			this.iv = new short[LongitudIv];
+			for (int i = 0; i < this.iv.length; i++) {
+				this.iv[i] = semilla[i];
 			}
 		} else {
-			throw new Exception("Longitud de la semilla: " + semilla.length + ". Longitud requerida: " + LONGITUD_SEMILLA);
+			throw new Exception("Longitud de iv incorrecta");
 		}
 
-		this.lfsr = new short[LONGITUD_CLAVE];
-		this.nfsr = new short[LONGITUD_CLAVE];
+		this.lfsr = new short[LongitudClave];
+		this.nfsr = new short[LongitudClave];
 
 		inicializar();
 
@@ -45,8 +45,8 @@ public class KeystreamGenerator {
 			nfsr[i] = clave[i];
 		}
 
-		for (i = 0; i < semilla.length; i++) {
-			lfsr[i] = semilla[i];
+		for (i = 0; i < iv.length; i++) {
+			lfsr[i] = iv[i];
 		}
 
 		for (; i < lfsr.length; i++) {
@@ -70,14 +70,13 @@ public class KeystreamGenerator {
 	}
 
 	private short clock() {
-		short output = output();
 		shiftLeftNFSR(feedbackNFSR());
 		shiftLeftLFSR(feedbackLFSR());
-		return output;
+		return filtro();
 	}
 
 	private void clockInicial() {
-		short output = output();
+		short output = filtro();
 		shiftLeftNFSR((short) ((feedbackNFSR() + output) % 2));
 		shiftLeftLFSR((short) ((feedbackLFSR() + output) % 2));
 	}
@@ -94,7 +93,7 @@ public class KeystreamGenerator {
 	}
 
 	private short feedbackNFSR() {
-		return (short) ((lfsr[0] + nfsr[62] + nfsr[60] + nfsr[52] + nfsr[45] + nfsr[37] + nfsr[33] + nfsr[28] + nfsr[21]
+		return (short) ((lfsr[0] + nfsr[63] + nfsr[60] + nfsr[52] + nfsr[45] + nfsr[37] + nfsr[33] + nfsr[28] + nfsr[21]
 				+ nfsr[14] + nfsr[9] + nfsr[0] + nfsr[63] * nfsr[60] + nfsr[37] * nfsr[33] + nfsr[15] * nfsr[9]
 				+ nfsr[60] * nfsr[52] * nfsr[45] + nfsr[33] * nfsr[28] * nfsr[21]
 				+ nfsr[63] * nfsr[45] * nfsr[28] * nfsr[9] + nfsr[60] * nfsr[52] * nfsr[37] * nfsr[33]
@@ -108,12 +107,6 @@ public class KeystreamGenerator {
 			nfsr[i] = nfsr[i + 1];
 		}
 		nfsr[nfsr.length - 1] = bit;
-	}
-
-	private short output() {
-		short bi = (short) (nfsr[1] + nfsr[2] + nfsr[4] + nfsr[10] + nfsr[31] + nfsr[43] + nfsr[56]);
-		short h = filtro();
-		return (short) ((bi + h) % 2);
 	}
 	
 	private short filtro() {
