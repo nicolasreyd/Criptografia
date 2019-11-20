@@ -70,14 +70,14 @@ public class KeystreamGenerator {
 	}
 
 	private short clock() {
-		short output = output();
+		short output = filtro();
 		shiftLeftNFSR(feedbackNFSR());
 		shiftLeftLFSR(feedbackLFSR());
 		return output;
 	}
 
 	private void clockInicial() {
-		short output = output();
+		short output = filtro();
 		shiftLeftNFSR((short) ((feedbackNFSR() + output) % 2));
 		shiftLeftLFSR((short) ((feedbackLFSR() + output) % 2));
 	}
@@ -94,7 +94,7 @@ public class KeystreamGenerator {
 	}
 
 	private short feedbackNFSR() {
-		return (short) ((lfsr[0] + nfsr[62] + nfsr[60] + nfsr[52] + nfsr[45] + nfsr[37] + nfsr[33] + nfsr[28] + nfsr[21]
+		return (short) ((lfsr[0] + nfsr[63] + nfsr[60] + nfsr[52] + nfsr[45] + nfsr[37] + nfsr[33] + nfsr[28] + nfsr[21]
 				+ nfsr[14] + nfsr[9] + nfsr[0] + nfsr[63] * nfsr[60] + nfsr[37] * nfsr[33] + nfsr[15] * nfsr[9]
 				+ nfsr[60] * nfsr[52] * nfsr[45] + nfsr[33] * nfsr[28] * nfsr[21]
 				+ nfsr[63] * nfsr[45] * nfsr[28] * nfsr[9] + nfsr[60] * nfsr[52] * nfsr[37] * nfsr[33]
@@ -108,12 +108,6 @@ public class KeystreamGenerator {
 			nfsr[i] = nfsr[i + 1];
 		}
 		nfsr[nfsr.length - 1] = bit;
-	}
-
-	private short output() {
-		short bi = (short) (nfsr[1] + nfsr[2] + nfsr[4] + nfsr[10] + nfsr[31] + nfsr[43] + nfsr[56]);
-		short h = filtro();
-		return (short) ((bi + h) % 2);
 	}
 	
 	private short filtro() {
