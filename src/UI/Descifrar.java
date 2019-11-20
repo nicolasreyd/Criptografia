@@ -75,7 +75,7 @@ public class Descifrar {
 	 */
 	private void initialize() {
 		frmCifradorGrain = new JFrame();
-		frmCifradorGrain.setTitle("GRAIN - Cifrar");
+		frmCifradorGrain.setTitle("GRAIN - Descifrar");
 		frmCifradorGrain.getContentPane().setBackground(new Color(0, 0, 0));
 		frmCifradorGrain.setBounds(100, 100, 618, 637);
 		frmCifradorGrain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
